@@ -1,4 +1,5 @@
 const MORSE_TABLE = {
+    '*': ' ',
     '.-':     'a',
     '-...':   'b',
     '-.-.':   'c',
@@ -38,7 +39,25 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+ var n = 0,
+        key = [''],
+        i = 0;
+    while(n < expr. length) {
+        if (expr[n] === '1') {
+            if (expr[n + 1] === '0') key[i] += '.';
+            else key[i] += '-';
+        } else if (expr[n] === '*') {
+            key[i] += '*';
+            n += 8;
+        } 
+        if ((n + 2) % 10 == 0) {
+            key[i] = MORSE_TABLE[key[i]];
+            key.push('');
+            i++;
+        }
+        n += 2;
+    }
+    return key.join('');
 }
 
 module.exports = {
